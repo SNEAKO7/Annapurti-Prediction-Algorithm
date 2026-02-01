@@ -34,7 +34,7 @@ env/
 .claude/
 
 # Project Specific
-predictions/
+
 *.log
 # Exclude data files if they are large or sensitive, but user asked to include project files.
 # Usually we don't commit large CSVs, but for this specific initial commit I will NOT ignore 
