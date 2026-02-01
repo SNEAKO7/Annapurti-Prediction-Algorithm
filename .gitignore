@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environment
+.venv/
+venv/
+ENV/
+env/
+.env
+
+# IDEs
+.vscode/
+.idea/
+.claude/
+
+# Project Specific
+predictions/
+*.log
+# Exclude data files if they are large or sensitive, but user asked to include project files.
+# Usually we don't commit large CSVs, but for this specific initial commit I will NOT ignore 
+# Historical_Data unless it's too large (4MB txn data is fine for git).
+# If the user wants to ignore data, they can uncomment below.
+# Historical_Data/
