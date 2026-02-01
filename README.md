@@ -20,6 +20,7 @@ A production-grade machine learning system to predict next-month grain consumpti
 6. [Step-by-Step Algorithm Explanation](#6-step-by-step-algorithm-explanation)
 7. [How to Use with New Data](#7-how-to-use-with-new-data)
 8. [Understanding the Predictions](#8-understanding-the-predictions)
+9. [Hierarchical Forecast Reports](#9-hierarchical-forecast-reports)
 
 ---
 
@@ -587,6 +588,63 @@ python
 
 ---
 
+## 9. Hierarchical Forecast Reports
+
+After generating predictions, you can create **business-ready aggregated views** using the forecast report generator. This tool ensures all breakdowns are **internally consistent** - every sub-total sums exactly to its parent total.
+
+### Running the Report Generator
+
+```bash
+python generate_forecast_report.py
+```
+
+### Output Views Generated
+
+| View | File | Description |
+|------|------|-------------|
+| 1. Overall Aggregate | `view1_overall_aggregate_*.csv` | Grand total, averages per FPS and per card |
+| 2. Card-Type Breakdown | `view2_card_type_breakdown_*.csv` | Split by A (Antyodaya), PH (Priority), S (State) |
+| 3. FPS-Wise Forecast | `view3_fps_breakdown_*.csv` | Demand per Fair Price Shop |
+| 4. FPS x Card-Type | `view4_fps_cardtype_breakdown_*.csv` | Matrix of FPS rows × Card-type columns |
+| 5. Monthly Trend | `view5_monthly_consumption_*.csv` | Historical + forecast time series |
+
+All outputs are saved to the `forecast_reports/` folder.
+
+### Hierarchical Consistency Guarantee
+
+The report uses **bottom-up aggregation** to ensure mathematical consistency:
+
+```
+Card-level predictions (atomic data)
+        ↓ SUM
+Card-Type totals (A + PH + S = Grand Total)
+        ↓ SUM
+FPS totals (all shops = Grand Total)
+        ↓ SUM
+FPS × Card-Type matrix (all cells = Grand Total)
+```
+
+**Why this matters:**
+- Supply planning teams can trust FPS-level demand figures
+- Card-type allocations match total procurement needs
+- No "phantom quantities" that appear in one view but not another
+- Auditors can drill down from any total to card-level detail
+
+### Sample Output
+
+```
+HIERARCHICAL CONSISTENCY VERIFICATION
+---------------------------------------------------------------------
+Anchor (Grand Total):     29,745.57 kg
+Card-Type Sum:            29,745.57 kg  [OK]
+FPS Sum:                  29,745.57 kg  [OK]
+FPS x CardType Sum:       29,745.57 kg  [OK]
+
+OVERALL STATUS: ALL VIEWS RECONCILED SUCCESSFULLY
+```
+
+---
+
 ## Summary
 
 | Step | What Happens | Output |
@@ -596,6 +654,7 @@ python
 | 3. Engineer Features | Create lag, rolling, temporal, demographic features | 25 input variables |
 | 4. Train Model | LightGBM learns patterns | Trained model |
 | 5. Predict | Apply model to latest data | CSV with predictions |
+| 6. Generate Reports | Aggregate with consistency checks | 5 business-ready views |
 
 The predictions tell you: **"Card X will likely need Y kg of grain in month Z"**
 
