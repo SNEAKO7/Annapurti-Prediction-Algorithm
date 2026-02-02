@@ -12,6 +12,7 @@ import argparse
 from pathlib import Path
 from datetime import datetime
 from grain_forecaster import AnnapurtiForecaster
+from generate_forecast_report import generate_full_report
 
 
 def main():
@@ -90,6 +91,13 @@ def main():
     if importance is not None:
         print("\nTop 5 important features:")
         print(importance.head(5).to_string(index=False))
+
+    # Generate Forecast Reports
+    print("\n[Optional] Generating Forecast Reports...")
+    try:
+        generate_full_report()
+    except Exception as e:
+        print(f"Warning: Report generation failed: {e}")
 
     return predictions
 

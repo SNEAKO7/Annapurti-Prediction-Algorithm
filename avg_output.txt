@@ -1,0 +1,8 @@
+------------------------------
+STATISTICS FOR CARD TYPE 'A'
+------------------------------
+Average Monthly Consumption: 34.76 kg
+Median Monthly Consumption:  35.00 kg
+Std Dev of Consumption:      2.24 kg
+Number of Unique Cards:      810
+------------------------------
