@@ -1,5 +1,11 @@
 # Annapurti Grain Consumption Forecasting - Complete Guide
 
+> **⚠️ IMPORTANT NOTICE: TEST DATA ONLY**
+> 
+> **All data contained within this repository is synthetic test data generated solely for demonstration and development purposes. This dataset does NOT represent actual beneficiary information, real transaction records, or genuine grain distribution data from any operational public distribution system.**
+> 
+> **The data has been artificially created to showcase the forecasting algorithm's capabilities and should NOT be used for any production deployment, policy decisions, or real-world planning.**
+
 # Annapurti Grain Consumption Forecasting
 
 A production-grade machine learning system to predict next-month grain consumption for the Annapurti distribution system. This project uses historical transaction data to forecast demand at the Smart Card, Fair Price Shop (FPS), and Commodity levels.
