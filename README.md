@@ -4,7 +4,7 @@
 > 
 > **All data contained within this repository is synthetic test data generated solely for demonstration and development purposes. This dataset does NOT represent actual beneficiary information, real transaction records, or genuine grain distribution data from any operational public distribution system.**
 > 
-> **The data has been artificially created to showcase the forecasting algorithm's capabilities and should NOT be used for any production deployment, policy decisions, or real-world planning.**
+> **The data has been artificially created to showcase the forecasting algorithm's capabilities**
 
 # Annapurti Grain Consumption Forecasting
 
