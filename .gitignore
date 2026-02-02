@@ -34,6 +34,8 @@ env/
 .claude/
 
 # Project Specific
+pd/
+fr/
 
 *.log
 # Exclude data files if they are large or sensitive, but user asked to include project files.
